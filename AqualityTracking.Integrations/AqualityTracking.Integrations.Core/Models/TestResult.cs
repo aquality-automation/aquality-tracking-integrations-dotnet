@@ -14,7 +14,7 @@ namespace AqualityTracking.Integrations.Core.Models
         public int? TestId { get; set; }
         
         [JsonProperty("final_result_id")]
-        public int? FinalResultId { get; set; }
+        public FinalResultId? FinalResultId { get; set; }
         
         [JsonProperty("test_run_id")]
         public int? TestRunId { get; set; }
