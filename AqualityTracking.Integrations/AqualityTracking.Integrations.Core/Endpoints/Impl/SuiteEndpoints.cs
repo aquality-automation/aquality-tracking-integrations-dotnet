@@ -1,15 +1,25 @@
 ﻿using AqualityTracking.Integrations.Core.Models;
-using System;
 
 namespace AqualityTracking.Integrations.Core.Endpoints.Impl
 {
-    public class SuiteEndpoints : ISuiteEndpoints
+    public class SuiteEndpoints : AqualityTrackingEndpoints, ISuiteEndpoints
     {
         private const string CreateOrUpdateEndpoint = "/api/public/suite/create-or-update";
 
-        public Suite CreateSuite(string name)
+        public SuiteEndpoints(Configuration configuration, IHttpClient httpClient) : base(configuration, httpClient)
         {
-            throw new NotImplementedException();
+        }
+
+        public Suite CreateSuite(string name)
+        {           
+            var suite = new Suite
+            {
+                Name = name,
+                ProjectId = Configuration.ProjectId
+            };
+            var uri = GetUriBuilder(CreateOrUpdateEndpoint).Uri;
+
+            return HttpClient.SendPOST(uri, suite);
         }
     }
 }

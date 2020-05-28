@@ -1,8 +1,4 @@
 ﻿using AqualityTracking.Integrations.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 
 namespace AqualityTracking.Integrations.Core.Endpoints
 {
@@ -29,7 +25,7 @@ namespace AqualityTracking.Integrations.Core.Endpoints
         /// Add attachment to Test Result.
         /// </summary>
         /// <param name="testResultId">Id of Test Result.</param>
-        /// <param name="file">Attachment file.</param>
-        void AddAttachment(int testResultId, string file); // TODO: change second parameter
+        /// <param name="filepath">Path to attachment file.</param>
+        void AddAttachment(int testResultId, string filepath);
     }
 }
