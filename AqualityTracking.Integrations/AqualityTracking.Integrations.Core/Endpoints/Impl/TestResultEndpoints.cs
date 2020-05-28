@@ -1,5 +1,7 @@
 ﻿using AqualityTracking.Integrations.Core.Models;
-using System;
+using System.IO;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace AqualityTracking.Integrations.Core.Endpoints.Impl
 {
@@ -38,9 +40,22 @@ namespace AqualityTracking.Integrations.Core.Endpoints.Impl
             return HttpClient.SendPOST(uri, testResult);
         }
 
-        public void AddAttachment(int testResultId, string filepath)
+        public void AddAttachment(int testResultId, string filePath)
         {
-            throw new NotImplementedException();
+            var uri = GetUriBuilder(AddAttachmentEndpoint)
+                .AddParam("project_id", Configuration.ProjectId)
+                .AddParam("test_result_id", testResultId)
+                .Uri;
+
+            using (var fileContent = new ByteArrayContent(File.ReadAllBytes(filePath)))
+            {
+                fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse(MediaTypeConstants.MultipartFormData);
+                var content = new MultipartFormDataContent
+                {
+                    { fileContent, "files", Path.GetFileName(filePath) }
+                };
+                HttpClient.SendPOST<string>(uri, content);
+            }            
         }
     }
 }

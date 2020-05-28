@@ -25,7 +25,7 @@ namespace AqualityTracking.Integrations.Core.Endpoints
         /// Add attachment to Test Result.
         /// </summary>
         /// <param name="testResultId">Id of Test Result.</param>
-        /// <param name="filepath">Path to attachment file.</param>
-        void AddAttachment(int testResultId, string filepath);
+        /// <param name="filePath">Path to attachment file.</param>
+        void AddAttachment(int testResultId, string filePath);
     }
 }

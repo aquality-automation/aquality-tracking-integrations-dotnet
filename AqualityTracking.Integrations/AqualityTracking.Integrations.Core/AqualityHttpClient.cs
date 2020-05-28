@@ -17,8 +17,8 @@ namespace AqualityTracking.Integrations.Core
             this.configuration = configuration;
             client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = GetAuthorizationHeader();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("*/*"));
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaTypeConstants.ApplicationJson));
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaTypeConstants.Wildcard));
         }
 
         private AuthenticationHeaderValue GetAuthorizationHeader()
@@ -36,7 +36,7 @@ namespace AqualityTracking.Integrations.Core
         public TModel SendPOST<TModel>(Uri requestUri, TModel body)
         {
             var jsonBody = JsonConvert.SerializeObject(body);
-            return SendPOST<TModel>(requestUri, new StringContent(jsonBody, Encoding.UTF8, "application/json"));
+            return SendPOST<TModel>(requestUri, new StringContent(jsonBody, Encoding.UTF8, MediaTypeConstants.ApplicationJson));
         }
 
         public TResponse SendPOST<TResponse>(Uri requestUri, HttpContent content)
