@@ -2,14 +2,31 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Authors>aquality automation committers</Authors>
+    <Company>aquality automation</Company>
+    <Description>Aquality Tracking integration core for .NET test frameworks.</Description>
+    <PackageDescription>Aquality Tracking integration core for .NET test frameworks.</PackageDescription>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/aquality-automation/aquality-tracking-integrations-dotnet</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>aquality-tracking</PackageTags>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Copyright>Copyright 2020 Aquality Automation</Copyright>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="aqualityTracking.Template.json" />
+    <None Include="..\..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="aqualityTracking.Template.json" />
+    <Content Include="Resources\aqualityTracking.Template.json" Pack="true"/>
   </ItemGroup>
 
   <ItemGroup>
