@@ -19,65 +19,65 @@ namespace AqualityTracking.Integrations.Core.Configuration
 
         public bool Enabled
         {
-            get { return GetValueOrDefault("aquality.enabled", enabled); } 
+            get { return GetEnvValueOrDefault("aquality.enabled", enabled); } 
             set { enabled = value; }
         }
 
         public string Host
         {
-            get { return GetValueOrDefault("aquality.host", host); }
+            get { return GetEnvValueOrDefault("aquality.host", host); }
             set { host = value; }
         }
 
         public string Token
         {
-            get { return GetValueOrDefault("aquality.token", token); }
+            get { return GetEnvValueOrDefault("aquality.token", token); }
             set { token = value; }
         }
 
         public int ProjectId
         {
-            get { return GetValueOrDefault("aquality.projectId", projectId); }
+            get { return GetEnvValueOrDefault("aquality.projectId", projectId); }
             set { projectId = value; }
         }
 
         public string Executor
         {
-            get { return GetValueOrDefault("aquality.executor", executor); }
+            get { return GetEnvValueOrDefault("aquality.executor", executor); }
             set { executor = value; }
         }
 
         public string SuiteName
         {
-            get { return GetValueOrDefault("aquality.suiteName", suiteName); }
+            get { return GetEnvValueOrDefault("aquality.suiteName", suiteName); }
             set { suiteName = value; }
         }
 
         public string BuildName
         {
-            get { return GetValueOrDefault("aquality.buildName", buildName); }
+            get { return GetEnvValueOrDefault("aquality.buildName", buildName); }
             set { buildName = value; }
         }
 
         public string Environment
         {
-            get { return GetValueOrDefault("aquality.environment", environment); }
+            get { return GetEnvValueOrDefault("aquality.environment", environment); }
             set { environment = value; }
         }
 
         public string CiBuild
         {
-            get { return GetValueOrDefault("aquality.ciBuild", ciBuild); }
+            get { return GetEnvValueOrDefault("aquality.ciBuild", ciBuild); }
             set { ciBuild = value; }
         }
 
         public bool Debug
         {
-            get { return GetValueOrDefault("aquality.debug", debug); }
+            get { return GetEnvValueOrDefault("aquality.debug", debug); }
             set { debug = value; }
         }
 
-        private T GetValueOrDefault<T>(string key, T defaultValue)
+        private T GetEnvValueOrDefault<T>(string key, T defaultValue)
         {
             var envValue = EnvironmentReader.GetVariable(key);
             if (envValue != null)
