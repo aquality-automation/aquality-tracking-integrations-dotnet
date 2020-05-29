@@ -9,7 +9,7 @@ namespace AqualityTracking.Integrations.Core
 {
     public class Startup
     {
-        public void ConfigureServices(IServiceCollection serviceCollection)
+        public IServiceCollection ConfigureServices(IServiceCollection serviceCollection)
         {
             serviceCollection.AddSingleton(getConfiguration());
             serviceCollection.AddScoped<IHttpClient, AqualityHttpClient>();
@@ -17,6 +17,7 @@ namespace AqualityTracking.Integrations.Core
             serviceCollection.AddTransient<ITestRunEndpoints, TestRunEndpoints>();
             serviceCollection.AddTransient<ITestEndpoints, TestEndpoints>();
             serviceCollection.AddTransient<ITestResultEndpoints, TestResultEndpoints>();
+            return serviceCollection;
         }
 
         private IConfiguration getConfiguration()
