@@ -2,9 +2,9 @@
 using Newtonsoft.Json.Linq;
 using System.ComponentModel;
 
-namespace AqualityTracking.Integrations.Core
+namespace AqualityTracking.Integrations.Core.Configuration
 {
-    public class Configuration
+    public class Configuration : IConfiguration
     {
         private bool enabled;
         private string host;

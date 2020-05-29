@@ -1,4 +1,5 @@
-﻿using AqualityTracking.Integrations.Core.Http;
+﻿using AqualityTracking.Integrations.Core.Configuration;
+using AqualityTracking.Integrations.Core.Http;
 using AqualityTracking.Integrations.Core.Models;
 using System.IO;
 using System.Net.Http;
@@ -12,7 +13,7 @@ namespace AqualityTracking.Integrations.Core.Endpoints.Impl
         private const string FinishTestResultEndpoint = "/api/public/test/result/finish";
         private const string AddAttachmentEndpoint = "/api/public/test/result/attachment";
 
-        public TestResultEndpoints(Configuration configuration, IHttpClient httpClient) : base(configuration, httpClient)
+        public TestResultEndpoints(IConfiguration configuration, IHttpClient httpClient) : base(configuration, httpClient)
         {
         }
 

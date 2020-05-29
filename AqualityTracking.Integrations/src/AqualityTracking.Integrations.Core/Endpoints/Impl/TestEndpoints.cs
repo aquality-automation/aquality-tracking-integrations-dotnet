@@ -1,4 +1,5 @@
-﻿using AqualityTracking.Integrations.Core.Http;
+﻿using AqualityTracking.Integrations.Core.Configuration;
+using AqualityTracking.Integrations.Core.Http;
 using AqualityTracking.Integrations.Core.Models;
 using System.Collections.Generic;
 
@@ -8,7 +9,7 @@ namespace AqualityTracking.Integrations.Core.Endpoints.Impl
     {
         private const string CreateOrUpdateTestEndpoint = "/api/public/test/create-or-update";
 
-        public TestEndpoints(Configuration configuration, IHttpClient httpClient) : base(configuration, httpClient)
+        public TestEndpoints(IConfiguration configuration, IHttpClient httpClient) : base(configuration, httpClient)
         {
         }
 

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using AqualityTracking.Integrations.Core.Configuration;
+using Newtonsoft.Json;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -9,10 +10,10 @@ namespace AqualityTracking.Integrations.Core.Http
 {
     public class AqualityHttpClient : IHttpClient
     {
-        private readonly Configuration configuration;
+        private readonly IConfiguration configuration;
         private readonly HttpClient client;        
 
-        public AqualityHttpClient(Configuration configuration)
+        public AqualityHttpClient(IConfiguration configuration)
         {
             this.configuration = configuration;
             client = new HttpClient();

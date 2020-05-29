@@ -1,4 +1,5 @@
-﻿using AqualityTracking.Integrations.Core.Http;
+﻿using AqualityTracking.Integrations.Core.Configuration;
+using AqualityTracking.Integrations.Core.Http;
 using AqualityTracking.Integrations.Core.Models;
 
 namespace AqualityTracking.Integrations.Core.Endpoints.Impl
@@ -8,7 +9,7 @@ namespace AqualityTracking.Integrations.Core.Endpoints.Impl
         private const string StartTestRunEndpoint = "/api/public/testrun/start";
         private const string FinishTestRunEndpoint = "/api/public/testrun/finish";
 
-        public TestRunEndpoints(Configuration configuration, IHttpClient httpClient) : base(configuration, httpClient)
+        public TestRunEndpoints(IConfiguration configuration, IHttpClient httpClient) : base(configuration, httpClient)
         {
         }
 
