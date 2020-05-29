@@ -1,4 +1,5 @@
-﻿using AqualityTracking.Integrations.Core.Utilities;
+﻿using AqualityTracking.Integrations.Core.Http;
+using AqualityTracking.Integrations.Core.Utilities;
 
 namespace AqualityTracking.Integrations.Core.Endpoints.Impl
 {

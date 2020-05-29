@@ -1,4 +1,5 @@
-﻿using AqualityTracking.Integrations.Core.Models;
+﻿using AqualityTracking.Integrations.Core.Http;
+using AqualityTracking.Integrations.Core.Models;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;

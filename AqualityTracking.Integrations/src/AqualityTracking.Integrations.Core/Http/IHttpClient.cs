@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 
-namespace AqualityTracking.Integrations.Core
+namespace AqualityTracking.Integrations.Core.Http
 {
     public interface IHttpClient
     {

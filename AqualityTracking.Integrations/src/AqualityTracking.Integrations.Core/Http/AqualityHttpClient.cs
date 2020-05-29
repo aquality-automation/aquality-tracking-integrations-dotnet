@@ -5,7 +5,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AqualityTracking.Integrations.Core
+namespace AqualityTracking.Integrations.Core.Http
 {
     public class AqualityHttpClient : IHttpClient
     {

@@ -1,4 +1,4 @@
-﻿namespace AqualityTracking.Integrations.Core
+﻿namespace AqualityTracking.Integrations.Core.Http
 {
     public static class MediaTypeConstants
     {

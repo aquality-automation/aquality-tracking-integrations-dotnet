@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Text;
@@ -26,7 +27,5 @@ namespace AqualityTracking.Integrations.Core
         public string CiBuild { get; set; }
 
         public bool Debug { get; set; }
-
-        public string AttachmentDirectory { get; set; }
     }
 }
