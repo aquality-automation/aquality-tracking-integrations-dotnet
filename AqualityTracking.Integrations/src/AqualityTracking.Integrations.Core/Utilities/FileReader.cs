@@ -3,11 +3,11 @@ using System.IO;
 
 namespace AqualityTracking.Integrations.Core.Utilities
 {
-    public static class FileReader
+    internal static class FileReader
     {
         private static readonly string ResourceFolder = "Resources";
 
-        public static string ReadFromResources(string fileName)
+        internal static string ReadFromResources(string fileName)
         {
             var filePath = GetResourceFilePath(fileName);
             return File.ReadAllText(filePath);

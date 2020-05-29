@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace AqualityTracking.Integrations.Core.Configuration
 {
-    public class Configuration : IConfiguration
+    public class AqualityConfiguration : IConfiguration
     {
         private bool enabled;
         private string host;
@@ -87,9 +87,9 @@ namespace AqualityTracking.Integrations.Core.Configuration
             return defaultValue;
         }
 
-        public static Configuration ParseFromJson(string json)
+        public static AqualityConfiguration ParseFromJson(string json)
         {
-            return JObject.Parse(json)?.ToObject<Configuration>();
+            return JObject.Parse(json)?.ToObject<AqualityConfiguration>();
         }
     }
 }
