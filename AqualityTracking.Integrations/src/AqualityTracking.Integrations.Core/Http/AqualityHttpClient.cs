@@ -31,7 +31,7 @@ namespace AqualityTracking.Integrations.Core.Http
 
         public TResponse SendGET<TResponse>(Uri requestUri)
         {
-            return ExecureRequest<TResponse>(requestUri, uri => client.GetAsync(uri));
+            return ExecuteRequest<TResponse>(requestUri, uri => client.GetAsync(uri));
         }
 
         public TModel SendPOST<TModel>(Uri requestUri, TModel body)
@@ -42,10 +42,10 @@ namespace AqualityTracking.Integrations.Core.Http
 
         public TResponse SendPOST<TResponse>(Uri requestUri, HttpContent content)
         {         
-            return ExecureRequest<TResponse>(requestUri, uri => client.PostAsync(uri, content));
+            return ExecuteRequest<TResponse>(requestUri, uri => client.PostAsync(uri, content));
         }
 
-        private TResponse ExecureRequest<TResponse>(Uri uri, Func<Uri, Task<HttpResponseMessage>> getResponse)
+        private TResponse ExecuteRequest<TResponse>(Uri uri, Func<Uri, Task<HttpResponseMessage>> getResponse)
         {
             var response = getResponse(uri).Result;
             var content = response.Content.ReadAsStringAsync().Result;
