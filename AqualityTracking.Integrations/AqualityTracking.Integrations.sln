@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AqualityTracking.Integrations.Core", "AqualityTracking.Integrations.Core\AqualityTracking.Integrations.Core.csproj", "{0FE70831-5707-48AA-AD1E-8EC02E04C177}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AqualityTracking.Integrations.Core", "src\AqualityTracking.Integrations.Core\AqualityTracking.Integrations.Core.csproj", "{0FE70831-5707-48AA-AD1E-8EC02E04C177}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{38B81A9B-FA2A-425C-BEB5-40E69E0005CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,6 +20,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0FE70831-5707-48AA-AD1E-8EC02E04C177} = {38B81A9B-FA2A-425C-BEB5-40E69E0005CE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CC3B552A-F385-48E0-8496-DE13B78ECAED}
