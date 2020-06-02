@@ -6,7 +6,7 @@ namespace AqualityTracking.Integrations.Core.Endpoints.Impl
 {
     public abstract class AqualityTrackingEndpoints
     {
-        public AqualityTrackingEndpoints(IConfiguration configuration, IHttpClient httpClient)
+        protected AqualityTrackingEndpoints(IConfiguration configuration, IHttpClient httpClient)
         {
             Configuration = configuration;
             HttpClient = httpClient;
