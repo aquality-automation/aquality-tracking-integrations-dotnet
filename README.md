@@ -25,11 +25,13 @@ You are able to override these values from CI build via environment variables:
     aquality.debug={true/false}
 ```
 
-## SpecFlow 3.x [![NuGet](https://img.shields.io/nuget/v/AqualityTracking.SpecFlowPlugin)](https://www.nuget.org/packages/AqualityTracking.SpecFlowPlugin)
+## SpecFlow [![NuGet](https://img.shields.io/nuget/v/AqualityTracking.SpecFlowPlugin)](https://www.nuget.org/packages/AqualityTracking.SpecFlowPlugin)
 
-To use this adaptor with SpecFlow you have to add `AqualityTracking.SpecFlowPlugin` NuGet package.
+Currently supports [SpecFlow](https://specflow.org/) 3.1.x.
 
-Also add the following `stepDefinition` assembly to [specflow.json](https://specflow.org/documentation/configuration/).
+Install [AqualityTracking.SpecFlowPlugin](https://www.nuget.org/packages/AqualityTracking.SpecFlowPlugin) NuGet package.
+
+Add the following `stepDefinition` assembly to [specflow.json](https://specflow.org/documentation/configuration/).
 
 ```json
 "stepAssemblies": [
