@@ -1,11 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 namespace AqualityTracking.Integrations.Core.Utilities
 {
     internal static class EnvironmentReader
     {
+        internal static T GetValueOrDefault<T>(string key, T defaultValue)
+        {
+            var envValue = GetVariable(key);
+            if (envValue != null)
+            {
+                return (T)TypeDescriptor.GetConverter(typeof(T)).ConvertFrom(envValue);
+            }
+            return defaultValue;
+        }
+
         /// <summary>
         /// Gets value of environment variable by key.
         /// </summary>

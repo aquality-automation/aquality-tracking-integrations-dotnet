@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AqualityTracking.Integratio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{38B81A9B-FA2A-425C-BEB5-40E69E0005CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AqualityTracking.SpecFlowPlugin", "src\AqualityTracking.SpecFlowPlugin\AqualityTracking.SpecFlowPlugin.csproj", "{80F5C607-A534-4629-9C5A-067522667610}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +19,17 @@ Global
 		{0FE70831-5707-48AA-AD1E-8EC02E04C177}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FE70831-5707-48AA-AD1E-8EC02E04C177}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FE70831-5707-48AA-AD1E-8EC02E04C177}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80F5C607-A534-4629-9C5A-067522667610}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80F5C607-A534-4629-9C5A-067522667610}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80F5C607-A534-4629-9C5A-067522667610}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80F5C607-A534-4629-9C5A-067522667610}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0FE70831-5707-48AA-AD1E-8EC02E04C177} = {38B81A9B-FA2A-425C-BEB5-40E69E0005CE}
+		{80F5C607-A534-4629-9C5A-067522667610} = {38B81A9B-FA2A-425C-BEB5-40E69E0005CE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CC3B552A-F385-48E0-8496-DE13B78ECAED}
