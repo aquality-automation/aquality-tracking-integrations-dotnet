@@ -1,0 +1,41 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  buildConfiguration: 'Release'
+
+stages:
+- stage: test
+
+  jobs:
+  - job: sonar
+    displayName: Analyse code with SonarQube
+
+    steps:
+    - task: SonarCloudPrepare@1
+      displayName: 'Prepare SonarCloud analysis'
+      inputs:
+        SonarCloud: 'SonarCloud'
+        organization: 'aqualityautomation'
+        projectKey: 'aquality-automation_aquality-tracking-integrations-dotnet'
+        projectName: 'aquality-tracking-integrations-dotnet'
+        projectVersion: '$(Build.BuildNumber)'
+        extraProperties: |
+          sonar.coverage.exclusions=**/**
+    
+    - task: DotNetCoreCLI@2
+      displayName: 'Build solution'
+      inputs:
+        command: 'build'
+        projects: AqualityTracking.Integrations/AqualityTracking.Integrations.sln
+        arguments: -c $(buildConfiguration)
+
+    - task: SonarCloudAnalyze@1
+      displayName: 'Run SonarCloud code analysis'
+      continueOnError: true
+
+    - task: SonarCloudPublish@1
+      displayName: 'Publish SonarCloud quality gate results'
