@@ -53,15 +53,54 @@ namespace AqualityTracking.Integrations.Core
             }
         }
 
-        public bool Enabled => configuration.Enabled;
+        private bool Enabled => configuration.Enabled;
 
         public void StartTestRun()
         {
-            var suite = suiteEndpoints.CreateSuite(configuration.SuiteName);
-            var testRun = testRunEndpoints.StartTestRun((int)suite.Id, configuration.BuildName, configuration.Environment,
-                configuration.Executor, configuration.CiBuild, configuration.Debug);
-            currentSuite = suite;
-            currentTestRun = testRun;
+            if (Enabled)
+            {
+                var suite = suiteEndpoints.CreateSuite(configuration.SuiteName);
+                var testRun = testRunEndpoints.StartTestRun((int)suite.Id, configuration.BuildName, configuration.Environment,
+                    configuration.Executor, configuration.CiBuild, configuration.Debug);
+                currentSuite = suite;
+                currentTestRun = testRun;
+            }            
+        }
+
+        public void StartTestExecution(string testName = null)
+        {
+            if (Enabled)
+            {
+                var currentTestName = testName ?? currentTest.Value.Name;
+                var test = testEndpoints.CreateOrUpdateTest(currentTestName, new List<Suite> { currentSuite });
+                currentTest.Value = test;
+                var testResult = testResultEndpoints.StartTestResult((int)currentTestRun.Id, (int)test.Id);
+                currentTestResult.Value = testResult;
+            }            
+        }
+
+        public void AddAttachment(string filePath)
+        {
+            if (Enabled)
+            {
+                testResultEndpoints.AddAttachment((int)currentTestResult.Value.Id, filePath);
+            }            
+        }
+
+        public void FinishTestExecution(FinalResultId finalResultId, string failReson)
+        {
+            if (Enabled)
+            {
+                testResultEndpoints.FinishTestResult((int)currentTestResult.Value.Id, finalResultId, failReson);
+            }            
+        }
+
+        public void FinishTestRun()
+        {
+            if (Enabled)
+            {
+                testRunEndpoints.FinishTestRun((int)currentTestRun.Id);
+            }            
         }
 
         public void SetCurrentTest(Test test)
@@ -76,30 +115,6 @@ namespace AqualityTracking.Integrations.Core
                 currentTest.Value = new Test();
             }
             action.Invoke(currentTest.Value);
-        }
-
-        public void StartTestExecution(string testName = null)
-        {
-            var currentTestName = testName ?? currentTest.Value.Name;
-            var test = testEndpoints.CreateOrUpdateTest(currentTestName, new List<Suite> { currentSuite });
-            currentTest.Value = test;
-            var testResult = testResultEndpoints.StartTestResult((int)currentTestRun.Id, (int)test.Id);
-            currentTestResult.Value = testResult;
-        }
-
-        public void AddAttachment(string filePath)
-        {
-            testResultEndpoints.AddAttachment((int)currentTestResult.Value.Id, filePath);
-        }
-
-        public void FinishTestExecution(FinalResultId finalResultId, string failReson)
-        {
-            testResultEndpoints.FinishTestResult((int)currentTestResult.Value.Id, finalResultId, failReson);
-        }
-
-        public void FinishTestRun()
-        {
-            testRunEndpoints.FinishTestRun((int)currentTestRun.Id);
         }
     }
 }
