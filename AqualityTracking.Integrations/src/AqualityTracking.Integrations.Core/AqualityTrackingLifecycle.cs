@@ -62,9 +62,19 @@ namespace AqualityTracking.Integrations.Core
                 var suite = suiteEndpoints.CreateSuite(configuration.SuiteName);
                 var testRun = testRunEndpoints.StartTestRun((int)suite.Id, configuration.BuildName, configuration.Environment,
                     configuration.Executor, configuration.CiBuild, configuration.Debug);
-                currentSuite = suite;
-                currentTestRun = testRun;
+                SetCurrentSuite(suite);
+                SetCurrentTestRun(testRun);
             }            
+        }
+
+        private static void SetCurrentSuite(Suite suite)
+        {
+            currentSuite = suite;
+        }
+
+        private static void SetCurrentTestRun(TestRun testRun)
+        {
+            currentTestRun = testRun;
         }
 
         public void StartTestExecution(string testName = null)

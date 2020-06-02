@@ -10,6 +10,7 @@ namespace AqualityTracking.SpecFlowPlugin
         public void Initialize(RuntimePluginEvents runtimePluginEvents, RuntimePluginParameters runtimePluginParameters,
             UnitTestProviderConfiguration unitTestProviderConfiguration)
         {
+            // Add SpecFlow customizations
         }
     }
 }
