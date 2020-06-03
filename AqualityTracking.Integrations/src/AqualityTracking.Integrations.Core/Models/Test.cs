@@ -11,6 +11,9 @@ namespace AqualityTracking.Integrations.Core.Models
         [JsonProperty("name")]
         public string Name { get; set; }
 
+        [JsonProperty("body")]
+        public string Body { get; set; }
+
         [JsonProperty("project_id")]
         public int? ProjectId { get; set; }
 
