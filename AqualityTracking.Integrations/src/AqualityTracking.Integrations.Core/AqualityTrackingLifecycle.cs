@@ -1,4 +1,5 @@
-﻿using AqualityTracking.Integrations.Core.Configuration;
+﻿using AqualityTracking.Integrations.Core;
+using AqualityTracking.Integrations.Core.Configuration;
 using AqualityTracking.Integrations.Core.Endpoints;
 using AqualityTracking.Integrations.Core.Models;
 using Microsoft.Extensions.DependencyInjection;
@@ -6,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 
-namespace AqualityTracking.Integrations.Core
+namespace AqualityTracking.SpecFlowPlugin
 {
     public class AqualityTrackingLifecycle
     {
@@ -18,6 +19,7 @@ namespace AqualityTracking.Integrations.Core
 
         private readonly ThreadLocal<Test> currentTest = new ThreadLocal<Test>();
         private readonly ThreadLocal<TestResult> currentTestResult = new ThreadLocal<TestResult>();
+        private readonly ThreadLocal<Action<Test>> updateCurrentTestAction = new ThreadLocal<Action<Test>>();
 
         private readonly IConfiguration configuration;
         private readonly ISuiteEndpoints suiteEndpoints;
@@ -64,7 +66,7 @@ namespace AqualityTracking.Integrations.Core
                     configuration.Executor, configuration.CiBuild, configuration.Debug);
                 SetCurrentSuite(suite);
                 SetCurrentTestRun(testRun);
-            }            
+            }
         }
 
         private static void SetCurrentSuite(Suite suite)
@@ -77,16 +79,16 @@ namespace AqualityTracking.Integrations.Core
             currentTestRun = testRun;
         }
 
-        public void StartTestExecution(string testName = null)
+        public void StartTestExecution(string testName)
         {
             if (Enabled)
             {
-                var currentTestName = testName ?? currentTest.Value.Name;
-                var test = testEndpoints.CreateOrUpdateTest(currentTestName, new List<Suite> { currentSuite });
-                currentTest.Value = test;
-                var testResult = testResultEndpoints.StartTestResult((int)currentTestRun.Id, (int)test.Id);
-                currentTestResult.Value = testResult;
-            }            
+                var desiredTest = new Test { Name = testName };
+                updateCurrentTestAction.Value?.Invoke(desiredTest);
+
+                currentTest.Value = testEndpoints.CreateOrUpdateTest(desiredTest.Name, new List<Suite> { currentSuite });
+                currentTestResult.Value = testResultEndpoints.StartTestResult((int)currentTestRun.Id, (int)currentTest.Value.Id);
+            }
         }
 
         public void AddAttachment(string filePath)
@@ -94,15 +96,15 @@ namespace AqualityTracking.Integrations.Core
             if (Enabled)
             {
                 testResultEndpoints.AddAttachment((int)currentTestResult.Value.Id, filePath);
-            }            
+            }
         }
 
-        public void FinishTestExecution(FinalResultId finalResultId, string failReson)
+        public void FinishTestExecution(FinalResultId finalResultId, string failReason)
         {
             if (Enabled)
             {
-                testResultEndpoints.FinishTestResult((int)currentTestResult.Value.Id, finalResultId, failReson);
-            }            
+                testResultEndpoints.FinishTestResult((int)currentTestResult.Value.Id, finalResultId, failReason);
+            }
         }
 
         public void FinishTestRun()
@@ -110,21 +112,12 @@ namespace AqualityTracking.Integrations.Core
             if (Enabled)
             {
                 testRunEndpoints.FinishTestRun((int)currentTestRun.Id);
-            }            
-        }
-
-        public void SetCurrentTest(Test test)
-        {
-            currentTest.Value = test;
+            }
         }
 
         public void UpdateCurrentTest(Action<Test> action)
         {
-            if (!currentTest.IsValueCreated)
-            {
-                currentTest.Value = new Test();
-            }
-            action.Invoke(currentTest.Value);
+            updateCurrentTestAction.Value = action;
         }
     }
 }

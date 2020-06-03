@@ -1,6 +1,4 @@
-﻿using AqualityTracking.Integrations.Core;
-using AqualityTracking.Integrations.Core.Models;
-using TechTalk.SpecFlow;
+﻿using TechTalk.SpecFlow;
 
 namespace AqualityTracking.SpecFlowPlugin
 {
@@ -30,20 +28,11 @@ namespace AqualityTracking.SpecFlowPlugin
             lifecycle.FinishTestRun();
         }
 
-        [BeforeScenario(Order = int.MinValue)]
-        public void SetCurrentTestData()
-        {
-            var currentTestCase = new Test
-            {
-                Name = $"{featureContext.FeatureInfo.Title}: {scenarioContext.ScenarioInfo.Title}"
-            };
-            lifecycle.SetCurrentTest(currentTestCase);
-        }
-
         [BeforeScenario(Order = 0)]
         public void StartTestExecution()
         {
-            lifecycle.StartTestExecution();
+            var testName = $"{featureContext.FeatureInfo.Title}: {scenarioContext.ScenarioInfo.Title}";
+            lifecycle.StartTestExecution(testName);
         }
 
         [AfterScenario(Order = int.MaxValue)]

@@ -5,6 +5,7 @@ using AqualityTracking.Integrations.Core.Http;
 using AqualityTracking.Integrations.Core.Utilities;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
+using System.IO;
 
 namespace AqualityTracking.Integrations.Core
 {
@@ -22,8 +23,15 @@ namespace AqualityTracking.Integrations.Core
 
         private IConfiguration getConfiguration()
         {
-            var jsonSettings = FileReader.ReadFromResources(AqualityConstants.SettingsFileName);
-            return JObject.Parse(jsonSettings)?.ToObject<AqualityConfiguration>();
+            try
+            {
+                var jsonSettings = FileReader.ReadFromResources(AqualityConstants.SettingsFileName);
+                return JObject.Parse(jsonSettings)?.ToObject<AqualityConfiguration>();
+            }
+            catch (FileNotFoundException e)
+            {
+                throw new AqualityException($"Settings file `{AqualityConstants.SettingsFileName}` not found in `Resources` folder.", e);
+            }            
         }
     }
 }
