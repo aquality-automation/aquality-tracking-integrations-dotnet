@@ -1,5 +1,4 @@
-﻿using AqualityTracking.Integrations.Core;
-using AqualityTracking.Integrations.Core.Configuration;
+﻿using AqualityTracking.Integrations.Core.Configuration;
 using AqualityTracking.Integrations.Core.Endpoints;
 using AqualityTracking.Integrations.Core.Models;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 
-namespace AqualityTracking.SpecFlowPlugin
+namespace AqualityTracking.Integrations.Core
 {
     public class AqualityTrackingLifecycle
     {

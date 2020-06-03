@@ -1,4 +1,5 @@
-﻿using TechTalk.SpecFlow;
+﻿using AqualityTracking.Integrations.Core;
+using TechTalk.SpecFlow;
 
 namespace AqualityTracking.SpecFlowPlugin
 {
