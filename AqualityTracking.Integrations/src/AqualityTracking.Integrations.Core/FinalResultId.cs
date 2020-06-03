@@ -1,6 +1,6 @@
 ﻿namespace AqualityTracking.Integrations.Core
 {
-    public enum FinalResultId : int
+    public enum FinalResultId
     {
         Failed = 1,
         Passed = 2,

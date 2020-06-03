@@ -6,8 +6,8 @@ namespace AqualityTracking.Integrations.Core.Utilities
 {
     public class UriBuilder
     {
-        private System.UriBuilder builder;
-        private NameValueCollection queryParams;
+        private readonly System.UriBuilder builder;
+        private readonly NameValueCollection queryParams;
 
         public UriBuilder(string host)
         {
