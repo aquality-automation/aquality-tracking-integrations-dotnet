@@ -39,6 +39,20 @@ Add the following `stepDefinition` assembly to [specflow.json](https://specflow.
 ]
 ```
 
+## Reqnroll.NUnit
+
+Currently supports [Reqnroll.NUnit](https://reqnroll.net) 2.4.x.
+
+Install [AqualityTracking.ReqnrollNUnit] NuGet package.
+
+Add the following `stepDefinition` assembly to [reqnroll.json](https://docs.reqnroll.net/latest/installation/configuration.html).
+
+```json
+"bindingAssemblies": [
+    { "assembly": "AqualityTracking.ReqnrollPlugin" }
+]
+```
+
 ### License
 
 Library's source code is made available under the [Apache 2.0 license](https://github.com/aquality-automation/aquality-tracking-integrations-dotnet/blob/master/LICENSE).
