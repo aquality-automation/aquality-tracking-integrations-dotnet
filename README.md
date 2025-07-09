@@ -43,7 +43,7 @@ Add the following `stepDefinition` assembly to [specflow.json](https://specflow.
 
 Currently supports [Reqnroll.NUnit](https://reqnroll.net) 2.4.x.
 
-Install [AqualityTracking.ReqnrollNUnit] NuGet package.
+Install [AqualityTracking.ReqnrollPlugin] NuGet package.
 
 Add the following `stepDefinition` assembly to [reqnroll.json](https://docs.reqnroll.net/latest/installation/configuration.html).
 
