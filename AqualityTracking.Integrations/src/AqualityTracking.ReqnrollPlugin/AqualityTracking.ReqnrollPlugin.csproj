@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -7,12 +7,12 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Authors>aquality automation committers</Authors>
     <Company>aquality automation</Company>
-    <Description>Aquality Tracking integration for SpecFlow 3.1.</Description>
-    <PackageDescription>Aquality Tracking integration for SpecFlow 3.1.</PackageDescription>
-    <PackageLicenseExpression></PackageLicenseExpression>
+    <Description>Aquality Tracking integration for Reqnroll 2.4.1</Description>
+    <PackageDescription>Aquality Tracking integration for Reqnroll 2.4.1</PackageDescription>
     <RepositoryUrl>https://github.com/aquality-automation/aquality-tracking-integrations-dotnet</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>aquality-tracking</PackageTags>
+    <PackageLicenseExpression></PackageLicenseExpression>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Copyright>Copyright 2020 Aquality Automation</Copyright>
     <IsPackable>true</IsPackable>
@@ -30,13 +30,13 @@
       <PackagePath></PackagePath>
     </None>
   </ItemGroup>
-  
-  <ItemGroup>
-    <PackageReference Include="SpecFlow" Version="3.1.97" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AqualityTracking.Integrations.Core\AqualityTracking.Integrations.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Reqnroll" Version="2.4.1" />
   </ItemGroup>
 
 </Project>

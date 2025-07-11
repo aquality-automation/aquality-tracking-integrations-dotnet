@@ -1,3 +1,4 @@
+[![Build Status](https://dev.azure.com/aquality-automation/aquality-automation/_apis/build/status/aquality-automation.aquality-tracking-integrations-dotnet?branchName=master)](https://dev.azure.com/aquality-automation/aquality-automation/_build/latest?definitionId=15&branchName=master)
 [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=aquality-automation_aquality-tracking-integrations-dotnet&metric=alert_status)](https://sonarcloud.io/dashboard?id=aquality-automation_aquality-tracking-integrations-dotnet)
 [![NuGet](https://img.shields.io/nuget/v/AqualityTracking.Integrations.Core)](https://www.nuget.org/packages/AqualityTracking.Integrations.Core)
 
@@ -36,6 +37,20 @@ Add the following `stepDefinition` assembly to [specflow.json](https://specflow.
 ```json
 "stepAssemblies": [
     { "assembly": "AqualityTracking.SpecFlowPlugin" }
+]
+```
+
+## Reqnroll [![NuGet](https://img.shields.io/nuget/v/AqualityTracking.ReqnrollPlugin)](https://www.nuget.org/packages/AqualityTracking.ReqnrollPlugin)
+
+Currently supports [Reqnroll](https://reqnroll.net) 2.4.x.
+
+Install [AqualityTracking.ReqnrollPlugin](https://www.nuget.org/packages/AqualityTracking.ReqnrollPlugin) NuGet package.
+
+Add the following `stepDefinition` assembly to [reqnroll.json](https://docs.reqnroll.net/latest/installation/configuration.html).
+
+```json
+"bindingAssemblies": [
+    { "assembly": "AqualityTracking.ReqnrollPlugin" }
 ]
 ```
 
