@@ -39,3 +39,30 @@ stages:
 
     - task: SonarCloudPublish@1
       displayName: 'Publish SonarCloud quality gate results'
+- stage: deploy
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+
+  jobs:
+  - job: release
+    displayName: 'Publish NuGet package'
+
+  steps:
+  - task: gitversion/setup@0
+    displayName: 'Install GitTools'
+    inputs:
+    versionSpec: '5.x'
+  - task: gitversion/execute@0
+    inputs:
+    useConfigFile: true
+    configFilePath: 'GitVersion.yml'
+
+  - script: dotnet pack Aquality.Integrations.Core/src/AqualityTracking.ReqnrollPlugin.csproj -c $(buildConfiguration) -p:Version=$(GitVersion.NuGetVersion) -o $(Build.ArtifactStagingDirectory)
+    displayName: 'Pack to NuGet package'
+
+  - task: NuGetCommand@2
+    displayName: 'Push NuGet package'
+    inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/AqualityTracking.ReqnrollPlugin*.nupkg;!$(Build.ArtifactStagingDirectory)/**/Aquality.Selenium*.symbols.nupkg'
+    nuGetFeedType: 'external'
+    publishFeedCredentials: 'NuGet'
