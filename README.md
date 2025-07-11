@@ -40,9 +40,9 @@ Add the following `stepDefinition` assembly to [specflow.json](https://specflow.
 ]
 ```
 
-## Reqnroll.NUnit [![NuGet](https://img.shields.io/nuget/v/AqualityTracking.ReqnrollPlugin)](https://www.nuget.org/packages/AqualityTracking.ReqnrollPlugin)
+## Reqnroll [![NuGet](https://img.shields.io/nuget/v/AqualityTracking.ReqnrollPlugin)](https://www.nuget.org/packages/AqualityTracking.ReqnrollPlugin)
 
-Currently supports [Reqnroll.NUnit](https://reqnroll.net) 2.4.x.
+Currently supports [Reqnroll](https://reqnroll.net) 2.4.x.
 
 Install [AqualityTracking.ReqnrollPlugin](https://www.nuget.org/packages/AqualityTracking.ReqnrollPlugin) NuGet package.
 
