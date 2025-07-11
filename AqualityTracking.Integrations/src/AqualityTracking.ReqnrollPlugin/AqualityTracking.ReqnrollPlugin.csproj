@@ -7,8 +7,8 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Authors>aquality automation committers</Authors>
     <Company>aquality automation</Company>
-    <Description>Aquality Tracking integration for Reqnroll.NUnit 2.4.1</Description>
-    <PackageDescription>Aquality Tracking integration for Reqnroll.NUnit 2.4.1</PackageDescription>
+    <Description>Aquality Tracking integration for Reqnroll 2.4.1</Description>
+    <PackageDescription>Aquality Tracking integration for Reqnroll 2.4.1</PackageDescription>
     <RepositoryUrl>https://github.com/aquality-automation/aquality-tracking-integrations-dotnet</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>aquality-tracking</PackageTags>

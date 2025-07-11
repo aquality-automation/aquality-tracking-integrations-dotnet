@@ -5,7 +5,7 @@
 
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
     <Authors>aquality automation committers</Authors>
     <Company>aquality automation</Company>
     <Description>Aquality Tracking integration core for .NET test frameworks.</Description>
