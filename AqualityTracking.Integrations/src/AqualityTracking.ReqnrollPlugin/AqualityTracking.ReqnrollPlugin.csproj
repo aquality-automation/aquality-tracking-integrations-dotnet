@@ -32,11 +32,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Reqnroll.NUnit" Version="2.4.1" />
+    <ProjectReference Include="..\AqualityTracking.Integrations.Core\AqualityTracking.Integrations.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AqualityTracking.Integrations.Core\AqualityTracking.Integrations.Core.csproj" />
+    <PackageReference Include="Reqnroll" Version="2.4.1" />
   </ItemGroup>
 
 </Project>
